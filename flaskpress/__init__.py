@@ -22,8 +22,6 @@ db = SQLAlchemy(app)
 lg = LoginManager()
 lg.setup_app(app)
 
-Bootstrap(app)
-
 # Blueprints & shit
 from flaskpress.ctx import objects, filters
 from flaskpress.models import users

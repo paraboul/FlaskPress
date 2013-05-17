@@ -23,15 +23,13 @@ def default():
 @app.route('/<slug>.html')
 def single(slug):
   fp['page'] = None
-  page = Page.query.filter_by(link=slug).first()
-  if page:
-    fp['page'] = page
-    fp['title'] = page.title
-    fp['breadcrumb'] = [
-      {'v' : page.title}
-    ]
-  else:
-    abort(404)
+  page = Page.query.filter_by(link=slug).first_or_404()
+
+  fp['page'] = page
+  fp['title'] = page.title
+  fp['breadcrumb'] = [
+    {'v' : page.title}
+  ]
   return render_template(
     theme['active']+'/'+'page.html',
     fp=fp

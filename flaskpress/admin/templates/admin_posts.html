@@ -1,0 +1,44 @@
+{% extends '_admin_base.html' %}
+{% block content %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
+<div class="row-fluid">
+  <div class="span7">
+    <div class="box">
+      <h2>Add new post</h2>
+
+      <form action="/admin/posts/?q=add" method="post" accept-charset="UTF-8">
+        {{postForm.hidden_tag()}}
+        {{wtf.form_errors(postForm, "only")}}
+        {{wtf.inline_field(postForm.title)}}
+        {{wtf.inline_field(postForm.link)}}<br />
+        <div class="small_select">{{wtf.inline_field(postForm.id_category)}} {{wtf.inline_field(postForm.tags)}}</div>
+        <textarea class="ckeditor" name="body" id="body">{% if postForm.data.body %}{{postForm.data.body}}{% endif %}</textarea>
+        <br />
+        <input class="btn " style=" height: 30px; font-size: 13px; margin-top: -11px; display: inline-block;" type="submit" name="commit" value="Save" />
+      </form>     
+    </div>
+  </div>
+  <div class="span5">
+    <form action="/admin/posts/?q=multi" method="post" accept-charset="UTF-8">
+      <table class="table table-striped">
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Category</th>  
+          <th>Date</th>
+        </tr>
+        {% for post in posts %}
+          <tr>
+            <td><input type="checkbox" name="selected" value="{{post.id}}"></td>
+            <td><a href="/admin/posts/{{post.id}}/">{{post.title}}</a></td>
+            <td><a href="/admin/categories/{{post.category.id}}/">{{post.category.title}}</a></td>
+            <td>{{post.created}}</td>
+          </tr>
+        {% endfor %}
+      </table>
+      {{wtf.inline_field(postMultiForm.actions)}}
+      <input class="btn " style=" height: 30px; font-size: 13px; margin-top: -11px; display: inline-block;" type="submit" name="commit" value="Apply" />
+      </form>
+  </div>
+</div>
+{% endblock %}

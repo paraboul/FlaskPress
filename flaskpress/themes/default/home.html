@@ -1,0 +1,9 @@
+{% extends 'default/_base.html' %}
+{% block content %}
+  <div class="box">
+  <h2>{{fp.page.title}}</h2>
+  {{fp.page.body|safe}}
+  </div>
+  <br />
+  {{_post.list(fpLastPost)}}
+{% endblock %}

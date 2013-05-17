@@ -1,0 +1,20 @@
+{% extends '_admin_base.html' %}
+{% block content %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
+<div class="row-fluid">
+  <div class="box">
+    <h2>Edit post</h2>
+
+    <form action="/admin/posts/{{post.id}}/" method="post" accept-charset="UTF-8">
+      {{postForm.hidden_tag()}}
+      {{wtf.form_errors(postForm, "only")}}
+      {{wtf.inline_field(postForm.title)}}
+      {{wtf.inline_field(postForm.link)}}<br />
+      <div class="small_select">{{wtf.inline_field(postForm.id_category)}} {{wtf.inline_field(postForm.tags)}}</div>
+      <textarea class="ckeditor" name="body" id="body">{% if postForm.data.body %}{{postForm.data.body}}{% endif %}</textarea>
+      <br />
+      <input class="btn " style=" height: 30px; font-size: 13px; margin-top: -11px; display: inline-block;" type="submit" name="commit" value="Save" />
+    </form>     
+  </div>
+</div>
+{% endblock %}

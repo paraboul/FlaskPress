@@ -1,0 +1,13 @@
+{% extends '_admin_base.html' %}
+{% block content %}
+  <form action="/admin/login/" method="post" accept-charset="UTF-8">
+      {{user_login.hidden_tag()}}
+
+      {{wtf.form_errors(user_login, "only")}}
+
+      {{wtf.inline_field(user_login.email, id="user_email")}}
+      {{wtf.inline_field(user_login.password)}}
+
+      <input class="btn " style=" height: 30px; font-size: 13px; margin-top: -11px; display: inline-block;" type="submit" name="commit" value="Sign In" />
+  </form>
+{% endblock %}

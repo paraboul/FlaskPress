@@ -1,0 +1,8 @@
+{% extends 'default/_base.html' %}
+{% block content %}
+  <h2>{{fp.tag.name}}</h2>
+  <br />
+  {% for post in fp.posts.items %}
+    {{_post.list(post)}}
+  {% endfor %}
+{% endblock %}

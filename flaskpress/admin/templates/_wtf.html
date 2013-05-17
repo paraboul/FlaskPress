@@ -1,0 +1,53 @@
+{%- macro inline_field(field) %}
+{%- with required = "required" if kwargs['required'] or field.flags.required else "" -%}
+  {% if field.errors %}
+    {% set classer="error_inline" %}
+  {% else %}
+    {% set classer="" %}
+  {% endif %}
+  {% if  required %}
+    {{field(placeholder=field.label.text, class=classer, required=required, **kwargs)}}
+  {% else %}
+    {{field(placeholder=field.label.text, class=classer,  **kwargs)}}
+  {% endif %}
+{%- endwith %}
+{%- endmacro %}
+
+{%- macro horizontal_field(field, class="") %}
+<div class="control-group {% if field.errors %}error{% endif %} {{class|replace('None','')}}">
+
+  {% if field.flags and field.flags.required %}
+    {% set require = ' <span class="red">*</span>'|safe %}
+  {% endif %}
+  {{field.label(class="control-label", text=field.label.text|safe  ~ require ~ mail|safe)}}
+
+  <div class="controls">
+    {% if field.flags.required %}
+      {{field(placeholder=field.label.text, class=classer, required=required, **kwargs)}}
+    {% else %}
+      {{field(placeholder=field.label.text, class=classer,  **kwargs)}}
+    {% endif %}
+
+    {%- if field.errors %}
+      {%- for error in field.errors %}
+        <p class="help-block">{{error|safe}}</p>
+      {%- endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{% macro form_errors(form, hiddens=True) %}
+  {%- if form.errors %}
+    <div class="alert alert-error" style="padding: 10px; font-size: 11px">
+    {%- for fieldname, errors in form.errors.iteritems() %}
+      <i>Errors on field <b>{{fieldname}}</b>:</i>
+      <ul style="padding:0; margin-bottom: 0px;">
+      {%- for error in errors %}
+        <li>{{error|safe}}</li>
+      {%- endfor %}
+      </ul>
+    {%- endfor %}
+    </div>
+  {%- endif %}
+{%- endmacro %}

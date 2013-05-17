@@ -1,0 +1,8 @@
+{% extends 'default/_base.html' %}
+{% block content %}
+  <ul>
+  {% for category in fp.categories %}
+    <li><a href="/posts/c/{{category.link}}.html">{{category.title}}</a> - {{category.body}}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

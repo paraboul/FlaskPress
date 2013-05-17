@@ -1,0 +1,75 @@
+{% extends '_admin_base.html' %}
+{% block content %}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js"></script>
+  <style>
+    .menu .area {
+      border-left: 4px solid #303030; 
+    }
+    table {
+      margin: 0 !important;
+    }
+    .accordion-group {
+      background: #fefefe;
+    }
+
+  .accordion-heading .accordion-toggle {
+    padding: 0px;
+  }
+  </style>
+  <div class="menu">
+    <div class="accordion">
+      <form action="/admin/pages/?q=multi" method="post" accept-charset="UTF-8">
+        {% for page in pages %}
+          <div class="accordion-group">
+            <div class="accordion-heading area">
+              <table class="table">
+                <tr >
+                  <td style="width: 30px;"><input type="checkbox" name="selected" value="{{page.id}}"></td>
+                  <td><a href="/admin/pages/{{page.id}}/">{{page.title}}</a></td>
+                  <td  style="width: 150px;">{{page.link}}</td>
+                  <td  style="width: 150px;">{% if page.childs|length != 0 %}<a class="accordion-toggle collapsed" data-toggle="collapse" href="#area{{page.id}}">{% endif %}{{page.childs|length}} childs{% if page.childs|length != 0 %}</a>{% endif %}</td>
+                  <td  style="width: 150px;">{{page.created}}</td>
+                </tr>
+              </table>
+            </div>
+            {% if page.childs|length != 0 %}
+              <div id="area{{page.id}}" class="accordion-body collapse" style="height: 0px;">
+                <div class="accordion-inner" style="border-left: 4px solid #aaa;">
+                <table class="table table-striped" style="border-bottom: 1px solid #DDDDDD">
+                  {% for child in page.childs %}
+                    <tr class="child">
+                      <td style="width: 30px;"><input type="checkbox" name="selected" value="{{page.id}}"></td>
+                      <td><a href="/admin/pages/{{child.id}}/">{{child.title}}</a></td>
+                      <td style="width: 150px;">{{child.link}}</td>
+                      <td style="width: 150px;"></td>
+                      <td style="width: 150px;">{{child.created}}</td>
+                    </tr>
+                  {% endfor %}
+                  </table>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        {{wtf.inline_field(pageMultiForm.actions)}} <input class="btn " style=" height: 30px; font-size: 13px; margin-top: -11px; display: inline-block;" type="submit" name="commit" value="Apply" />
+      </form>
+    </div>
+  </div>
+  <div class="box">
+    <h2>Add new page</h2>
+
+    <form action="/admin/pages/?q=add" method="post" accept-charset="UTF-8">
+      {{pageForm.hidden_tag()}}
+      {{wtf.form_errors(pageForm, "only")}}
+      {{wtf.inline_field(pageForm.title)}}
+      {{wtf.inline_field(pageForm.link)}}<br />
+      <div class="small_select">{{wtf.inline_field(pageForm.id_parent)}} </div>
+      <textarea class="ckeditor" name="body" id="body">{% if pageForm.data.body %}{{pageForm.data.body}}{% endif %}</textarea>
+      <br />
+      <input class="btn " style=" height: 30px; font-size: 13px; margin-top: -11px; display: inline-block;" type="submit" name="commit" value="Save" />
+    </form>     
+  </div>
+
+</div>
+{% endblock %}
+

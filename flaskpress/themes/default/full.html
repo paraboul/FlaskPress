@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>{{fp.site.title}}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet" media="screen">
+  <link href="/static/css/style.css" rel="stylesheet" media="screen">
+<body>
+  <div class="container wrapper">
+    <div id="header">
+      <div id="top">
+        <h1>{{fp.site.title}}</h1>
+      </div>
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <div class="row-fluid">
+        <div class="span9">
+          <ul class="breadcrumb">
+            <li><a href="#">{{fp.site.title}}</a> <span class="divider">/</span></li>
+            <li class="active">Home</li>
+          </ul>        
+          <div class="box">
+            <h2>Welcome to {{fp.site.title}}</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ornare, risus eu sodales mollis, turpis lacus mattis velit, accumsan varius mi lacus ac massa. Phasellus nec aliquam nunc. Sed sapien sapien, fermentum nec placerat a, vestibulum sed sapien. Donec leo dolor, placerat sed consequat ut, egestas eget mi. Nam mollis, nibh at luctus consequat, lacus lacus pretium eros, eget sodales urna lorem vel ante. Nullam pulvinar tristique mi, ac faucibus massa aliquam quis. Aliquam sed lacus felis.
+            </p>
+          </div>
+          <br />
+  
+          <div class="box">
+            <h2><a href="#">Last news on {{fp.site.title}}</a></h2>
+            <ul class="inline tags">
+              <li><i class="icon-time"></i> 02/05/2013 - 19:25</li>
+              <li><i class="icon-folder-open"></i> <strong><a href="#">Category 1 </a></strong></li>
+              <li><i class="icon-tag"></i> <a href="#">Tag 1</a></li>
+              <li><i class="icon-tag"></i> <a href="#">Tag 2</a></li>
+              <li><i class="icon-tag"></i> <a href="#">Tag 3</a></li>
+              <li><i class="icon-tag"></i> <a href="#">Tag 4</a></li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ornare, risus eu sodales mollis, turpis lacus mattis velit, accumsan varius mi lacus ac massa. Phasellus nec aliquam nunc. Sed sapien sapien, fermentum nec placerat a, vestibulum sed sapien. Donec leo dolor, placerat sed consequat ut, egestas eget mi. Nam mollis, nibh at luctus consequat, lacus lacus pretium eros, eget sodales urna lorem vel ante. Nullam pulvinar tristique mi, ac faucibus massa aliquam quis. Aliquam sed lacus felis. </p>
+          </div>
+        </div>
+        <div class="span3">
+          <div id="sidebar">
+            <div class="box">
+              <h3>{{fp.site.title}}'s blog</h3>
+              <ul class="unstyled">
+                <li><i class="icon-file"></i> <a href="#">Title post long long</a></li>
+                <li><i class="icon-file"></i> <a href="#">Title post long long</a></li>
+                <li><i class="icon-file"></i> <a href="#">Title post long long</a></li>
+                <li><i class="icon-file"></i> <a href="#">Title post long long</a></li>
+                <li><i class="icon-file"></i> <a href="#">Title post long long</a></li>
+              </ul>            
+            </div>
+            <br />
+
+            <div class="box">
+              <h3>{{fp.site.title}}'s categories</h3>
+              <dl class="dl-horizontal">
+                <dt><i class="icon-folder-open"></i>  <a href="#">Category 1</a></dt>
+                <dd>(10)</dd>
+                <dt><i class="icon-folder-open"></i>  <a href="#">Category 2</a></dt>
+                <dd>(20)</dd>
+                <dt><i class="icon-folder-open"></i>  <a href="#">Category 3</a></dt>
+                <dd>(5)</dd>
+              </dl>            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="push"></div>
+  </div>
+<div id="footer">
+  <div class="container">
+    <p class="pull-left">
+      &copy; {{fp.site.title}} {{fp.site.created}}
+    </p>
+    <ul class="inline pull-right">
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+    <br /><br />
+    <div class="center">
+      <ul class="inline">
+        <li><i class="icon-folder-open"></i> <strong>Popular categories:</strong></li>
+        <li><a href="#">Category 1</a></li>
+        <li><a href="#">Category 2</a></li>
+        <li><a href="#">Category 3</a></li>
+        <li><a href="#">Category 4</a></li>
+        <li><a href="#">Category 5</a></li>
+      </ul>
+      <ul class="inline">
+        <li><i class="icon-tag"></i> <strong>Popular tags:</strong></li>
+        <li><a href="#">Tag 1</a></li>
+        <li><a href="#">Tag 2</a></li>
+        <li><a href="#">Tag 3</a></li>
+        <li><a href="#">Tag 4</a></li>
+        <li><a href="#">Tag 5</a></li>
+      </ul>
+      <span id="footerH1">
+        {{fp.site.title}}
+      </span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

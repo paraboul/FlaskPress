@@ -1,0 +1,6 @@
+{% extends 'default/_base.html' %}
+{% block content %}
+  {% for post in fp.posts.items %}
+    {{_post.list(post)}}
+  {% endfor %}
+{% endblock %}

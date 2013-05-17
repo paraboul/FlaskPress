@@ -1,0 +1,8 @@
+{% extends 'default/_base.html' %}
+{% block content %}
+  <ul>
+  {% for tag in fp.tags %}
+    <li><a href="/posts/t/{{tag.link}}.html">{{tag.name}}</a> ({{tag.posts|length}})</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

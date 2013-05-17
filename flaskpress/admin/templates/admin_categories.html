@@ -1,0 +1,47 @@
+{% extends '_admin_base.html' %}
+{% block content %}
+<div class="row-fluid">
+  <div class="span6">
+    <div class="box">
+      <h2>Add new category</h2>
+      <p>The description is not prominent by default; however, some themes may show it.</p>
+
+      <form action="/admin/categories/?q=add" method="post" accept-charset="UTF-8">
+        {{categoryForm.hidden_tag()}}
+
+        {{wtf.form_errors(categoryForm, "only")}}
+
+        {{wtf.horizontal_field(categoryForm.title)}}
+        {{wtf.horizontal_field(categoryForm.link)}}
+        {{wtf.horizontal_field(categoryForm.body)}}
+
+        <input class="btn " style=" height: 30px; font-size: 13px; margin-top: -11px; display: inline-block;" type="submit" name="commit" value="Save" />
+      </form>     
+    </div>
+  </div>
+  <div class="span6">
+    <form action="/admin/categories/?q=multi" method="post" accept-charset="UTF-8">
+      <table class="table table-striped">
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Description</th> 
+          <th>Slug</th>  
+          <th>Posts</th>
+        </tr>
+        {% for category in categories %}
+          <tr>
+            <td><input type="checkbox" name="selected" value="{{category.id}}"></td>
+            <td><a href="/admin/categories/{{category.id}}/">{{category.title}}</a></td>
+            <td>{{category.body}}</td>
+            <td>{{category.link}}</td>
+            <td>{{category.posts}}</td>
+          </tr>
+        {% endfor %}
+      </table>
+      {{wtf.inline_field(categoryMultiForm.actions)}}
+      <input class="btn " style=" height: 30px; font-size: 13px; margin-top: -11px; display: inline-block;" type="submit" name="commit" value="Apply" />
+      </form>
+  </div>
+</div>
+{% endblock %}

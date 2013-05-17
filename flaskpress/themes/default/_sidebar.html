@@ -1,0 +1,19 @@
+<div class="box">
+  <h3>{{fp.site.title}}'s blog</h3>
+  <ul class="unstyled">
+    {% for post in fpLastPosts %}
+      <li><i class="icon-file"></i> <a href="/posts/{{post.link}}.html">{{post.title|truncate(40)}}</a></li>
+    {% endfor %}
+  </ul>            
+</div>
+<br />
+
+<div class="box">
+  <h3>{{fp.site.title}}'s categories</h3>
+  <dl class="dl-horizontal">
+    {% for category in fpCategories %}
+      <dt><i class="icon-folder-open"></i>  <a href="/posts/c/{{category.link}}.html">{{category.title}}</a></dt>
+      <dd>({{category.posts}})</dd>
+    {% endfor %}
+  </dl>            
+</div>

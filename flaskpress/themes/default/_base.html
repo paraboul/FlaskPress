@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>{{fp.site.title}}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet" media="screen">
+  <link href="/static/css/style.css" rel="stylesheet" media="screen">
+  {% block header %}{% endblock %}
+</head>
+<body>
+  {% import "default/_post.html" as _post %}
+  <div class="container wrapper">
+    <div id="header">
+      <div id="top">
+        <h1>{{fp.site.title}}</h1>
+      </div>
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <div class="row-fluid">
+        <div class="span9">
+          <ul class="breadcrumb">
+            <li><a href="/">{{fp.site.title}}</a> <span class="divider">/</span></li>
+            {% for item in fp.breadcrumb %}
+               {% if item.a %}
+                <li><a href="{{item.a}}">{{item.v}}</a> <span class="divider">/</span></li>
+               {% else %}
+                <li class="active">{{item.v}}</li>
+               {% endif %}
+            {% endfor %}
+          </ul>        
+          {% block content %}{% endblock %}
+        </div>
+        <div class="span3">
+          <div id="sidebar">
+              {% include 'default/_sidebar.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="push"></div>
+  </div>
+<div id="footer">
+  <div class="container">
+    <p class="pull-left">
+      &copy; {{fp.site.title}} {{fp.site.created}}
+    </p>
+    <ul class="inline pull-right">
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+    <br /><br />
+    <div class="center">
+      <ul class="inline">
+        <li><i class="icon-folder-open"></i> <strong>Popular categories:</strong></li>
+        <li><a href="#">Category 1</a></li>
+        <li><a href="#">Category 2</a></li>
+        <li><a href="#">Category 3</a></li>
+        <li><a href="#">Category 4</a></li>
+        <li><a href="#">Category 5</a></li>
+      </ul>
+      <ul class="inline">
+        <li><i class="icon-tag"></i> <strong>Popular tags:</strong></li>
+        <li><a href="#">Tag 1</a></li>
+        <li><a href="#">Tag 2</a></li>
+        <li><a href="#">Tag 3</a></li>
+        <li><a href="#">Tag 4</a></li>
+        <li><a href="#">Tag 5</a></li>
+      </ul>
+      <span id="footerH1">
+        {{fp.site.title}}
+      </span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

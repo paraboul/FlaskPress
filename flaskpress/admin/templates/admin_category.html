@@ -1,0 +1,20 @@
+{% extends '_admin_base.html' %}
+{% block content %}
+<div class="row-fluid">
+  <div class="box">
+    <h2>Edit category</h2>
+
+    <form action="/admin/categories/{{category.id}}/" method="post" accept-charset="UTF-8">
+      {{categoryForm.hidden_tag()}}
+
+      {{wtf.form_errors(categoryForm, "only")}}
+
+      {{wtf.horizontal_field(categoryForm.title)}}
+      {{wtf.horizontal_field(categoryForm.link)}}
+      {{wtf.horizontal_field(categoryForm.body)}}
+
+      <input class="btn " style=" height: 30px; font-size: 13px; margin-top: -11px; display: inline-block;" type="submit" name="commit" value="Save" />
+    </form>     
+  </div>
+</div>
+{% endblock %}

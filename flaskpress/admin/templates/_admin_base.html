@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>{{fp.site.title}}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet" media="screen">
+  <script src="/admin/static/js/admin.js"></script>
+  <link href="/admin/static/css/style.css" rel="stylesheet" media="screen">
+  {% block header %}{% endblock %}
+</head>
+<body>
+  {% import "_wtf.html" as wtf %}
+  <div class="container wrapper">
+    <div id="header">
+      <div id="top">
+        <h1>{{fp.site.title}} Admin</h1>
+      </div>
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <ul class="nav">
+            <li {% if fp.page == 'home' %}class="active"{% endif %}><a href="/admin/">Dashboard</a></li>
+            <li {% if fp.page == 'categories' or fp.page == 'category_id'%}class="active"{% endif %}><a href="/admin/categories/">Categories</a></li>
+            <li {% if fp.page == 'posts' or fp.page == 'post_id' %}class="active"{% endif %}><a href="/admin/posts/">Posts</a></li>
+            <li {% if fp.page == 'pages' %}class="active"{% endif %}><a href="/admin/pages/">Pages</a></li>
+            <li {% if fp.page == 'options' %}class="active"{% endif %}><a href="/admin/options/">Options</a></li>
+          </ul>
+          {% if fp.user.id %}
+            <ul class="nav pull-right">
+              <li class="active"><a href="/admin/logout/">Logout ({{fp.user.email}})</a></li>
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="pl10">
+          <ul class="breadcrumb">
+              <li><a href="/">{{fp.site.title}}</a> <span class="divider">/</span></li>
+              <li><a href="/admin/">Admin</a> <span class="divider">/</span></li>
+              {% for item in fp.breadcrumb %}
+                 {% if item.a %}
+                  <li><a href="{{item.a}}">{{item.v}}</a> <span class="divider">/</span></li>
+                 {% else %}
+                  <li class="active">{{item.v}}</li>
+                 {% endif %}
+              {% endfor %}
+            </ul>        
+           {% block content %}{% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="push"></div>
+  </div>
+<div id="footer">
+  <div class="container">
+    <p class="pull-left">
+      &copy; {{fp.site.title}} {{fp.site.created}}
+    </p>
+   
+    <span id="footerH1">
+      {{fp.site.title}}
+    </span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

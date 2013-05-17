@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- static pages -->
+  <url>
+    <loc>{{url}}</loc>
+  </url>
+  <url>
+    <loc>{{url}}posts/</loc>
+  </url>
+  <url>
+    <loc>{{url}}posts/t/</loc>
+  </url>
+  <url>
+    <loc>{{url}}posts/c/</loc>
+  </url>
+
+  <!-- posts -->
+  {% for post in posts %}
+    <url>
+      <loc>{{url}}posts/{{post.link}}.html</loc>
+    </url>
+  {% endfor %}
+
+  <!-- category -->
+  {% for category in categories %}
+    <url>
+      <loc>{{url}}posts/c/{{category.link}}.html</loc>
+    </url>
+  {% endfor %}
+
+  <!-- posts -->
+  {% for tag in tags %}
+    <url>
+      <loc>{{url}}posts/t/{{tag.link}}.html</loc>
+    </url>
+  {% endfor %}
+
+  <!-- pages  -->
+  {% for page in pages %}
+    <url>
+      <loc>{{url}}{{page.link}}.html</loc>
+    </url>
+  {% endfor %}
+</urlset>

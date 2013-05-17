@@ -20,8 +20,8 @@
       <div class="navbar navbar-inverse">
         <div class="navbar-inner">
           <ul class="nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/doc">Documentation</a></li>
+            <li {% if fp.page.link == 'index' %}class="active"{% endif %}><a href="/">Home</a></li>
+            <li {% if fp.page.link == 'doc' %}class="active"{% endif %}><a href="/doc.html">Documentation</a></li>
           </ul>
 
         </div>
@@ -57,9 +57,8 @@
       &copy; {{fp.site.title}} {{fp.site.created}}
     </p>
     <ul class="inline pull-right">
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/doc.html">Documentation</a></li>
     </ul>
     <br /><br />
     <div class="center">
